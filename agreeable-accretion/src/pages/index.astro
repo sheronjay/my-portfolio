@@ -1,0 +1,48 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const paragraphs = [
+	'I am Sheron Jayasinghe, a Computer Science & Engineering undergraduate at the University of Moratuwa, Sri Lanka.',
+	'My passion lies in integrated computer engineering, with a focus on microcontrollers, robotics, and IoT where technology meets creativity. Mathematics is another world I love exploring, especially when it intertwines with my work in robotics and intelligent systems.',
+	'I am a firm believer in learning by doing. Whether it is developing applications to solve everyday problems or understanding computers at their core, I push myself to grow in multiple areas.',
+	'Beyond tech, I have gained business and sales experience as a Sales Executive at Abans PLC, strengthening my ability to communicate, adapt, and solve problems efficiently.',
+	'As I advance in my studies, I am eager to participate in competitions, collaborate on impactful projects, and contribute to cutting-edge innovations that shape the future.',
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<main class="page-shell">
+			<nav aria-label="Primary">
+				<a href="https://www.linkedin.com/in/sheron-jayasinghe-54317934a" target="_blank" rel="noreferrer">
+					LinkedIn
+				</a>
+				<a href="/blog">blog</a>
+				<a href="/cv/CV - Sheron Jayasinghe.pdf" target="_blank" rel="noreferrer">cv</a>
+				<a href="https://github.com/sheronjay" target="_blank" rel="noreferrer">github</a>
+			</nav>
+
+			<section class="intro">
+				<h1>Sheron Jyasinghe&apos;s Homepage</h1>
+				<h2>
+					ආයුබෝවන්! (<a href="http://en.wiktionary.org/wiki/ayubowan" target="_blank" rel="noreferrer"
+						>āyubōvan</a
+					>)
+				</h2>
+
+				<div class="container">
+					{
+						paragraphs.map((paragraph) => (
+							<p>{paragraph}</p>
+						))
+					}
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
