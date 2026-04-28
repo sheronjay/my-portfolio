@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const pageTitle = `${project.data.title} — Projects — Sheron Jayasinghe`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={project.data.summary} />
+  </head>
+  <body>
+    <div id="wrapper">
+      <SiteHeader activePage="projects" />
+
+      <div id="content-area">
+        <div id="main-column">
+          <p class="issue-line">PROJECTS &mdash; {project.data.category.toUpperCase()}</p>
+
+          <article class="entry content-entry">
+            <p class="back-link"><a href="/projects">Back to all projects</a></p>
+            <span class={`project-status ${project.data.status}`}>
+              {project.data.status === 'wip' ? 'In Progress' : 'Completed'}
+            </span>
+            <h1>{project.data.title}</h1>
+            <p>{project.data.summary}</p>
+
+            {project.data.techStack.length > 0 && (
+              <p class="tech-stack">
+                <strong>Stack:</strong> {project.data.techStack.join(', ')}
+              </p>
+            )}
+
+            {(project.data.projectUrl || project.data.sourceUrl) && (
+              <div class="project-links">
+                {project.data.projectUrl && (
+                  <a href={project.data.projectUrl} target="_blank" rel="noreferrer">Project Link</a>
+                )}
+                {project.data.sourceUrl && (
+                  <a href={project.data.sourceUrl} target="_blank" rel="noreferrer">Source Code</a>
+                )}
+              </div>
+            )}
+
+            <div class="entry-content">
+              <Content />
+            </div>
+          </article>
+        </div>
+
+        <Sidebar />
+      </div>
+
+      <SiteFooter />
+    </div>
+  </body>
+</html>

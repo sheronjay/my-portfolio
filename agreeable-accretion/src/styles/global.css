@@ -328,6 +328,22 @@ h1, h2, h3, h4 {
   color: #555;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.project-links a {
+  color: #c0392b;
+}
+
 /* --- Section Headings -------------------------------- */
 .section-heading {
   font-family: Arial, Helvetica, sans-serif;
@@ -426,6 +442,72 @@ h1, h2, h3, h4 {
 
 .about-block p:last-child {
   margin-bottom: 0;
+}
+
+.content-entry {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.content-entry h1 {
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.content-entry .entry-content > * + * {
+  margin-top: 14px;
+}
+
+.content-entry .entry-content h2,
+.content-entry .entry-content h3,
+.content-entry .entry-content h4 {
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.content-entry .entry-content ul,
+.content-entry .entry-content ol {
+  margin-left: 20px;
+}
+
+.content-entry .entry-content li + li {
+  margin-top: 6px;
+}
+
+.content-entry .entry-content code {
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 1px 4px;
+}
+
+.content-entry .entry-content pre {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+.content-entry .entry-content pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.content-entry .entry-content blockquote {
+  border-left: 3px solid #c0392b;
+  padding-left: 12px;
+  color: #555;
+}
+
+.back-link {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 /* --- Footer ----------------------------------------- */

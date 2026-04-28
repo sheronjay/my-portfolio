@@ -4,9 +4,13 @@ import SiteHeader from '../components/SiteHeader.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { getCollection } from 'astro:content';
+import { sortProjects } from '../utils/content';
 
 const title = 'Projects — Sheron Jayasinghe';
 const description = 'Robotics, IoT, and software projects by Sheron Jayasinghe.';
+const projects = sortProjects(await getCollection('projects'));
+const categories = [...new Set(projects.map((project) => project.data.category))];
 ---
 
 <!doctype html>
@@ -23,45 +27,23 @@ const description = 'Robotics, IoT, and software projects by Sheron Jayasinghe.'
         <div id="main-column">
           <p class="issue-line">PROJECTS &mdash; SELECTED WORKS</p>
 
-          <div class="section-heading">Engineering &amp; Robotics</div>
-
-          <ProjectCard
-            title="Autonomous Line-Following Robot"
-            status="complete"
-            href="#"
-            description="A PID-controlled line-following robot built around an ATmega328P. Features real-time sensor fusion from 8 IR sensors, adaptive speed control, and a Bluetooth interface for live tuning of PID constants."
-            techStack={['C', 'AVR', 'ATmega328P', 'PID control', 'IR sensors']}
-            imgAlt="Line-following robot prototype"
-          />
-
-          <ProjectCard
-            title="Distributed IoT Air Quality Monitor"
-            status="complete"
-            href="#"
-            description="A campus-wide air quality monitoring network using 6 ESP32 nodes with MQ-135, DHT22, and PM2.5 sensors. Data is published over MQTT, stored in InfluxDB, and visualised in real-time via a Grafana dashboard."
-            techStack={['C++', 'ESP32', 'MQTT', 'InfluxDB', 'Grafana']}
-            imgAlt="IoT air quality node on breadboard"
-          />
-
-          <div class="section-heading">Software &amp; Web</div>
-
-          <ProjectCard
-            title="This Portfolio"
-            status="complete"
-            href="https://github.com/sheronjay"
-            description="A retro-themed personal portfolio site inspired by early 2000s web design. Built with Astro for fast static output with no unnecessary JavaScript. Designed to feel like a 2003 tech publication."
-            techStack={['Astro', 'TypeScript', 'CSS', 'HTML']}
-            imgAlt="Portfolio website screenshot"
-          />
-
-          <ProjectCard
-            title="Smart Home Automation Hub"
-            status="wip"
-            href="#"
-            description="A local-first smart home controller running on a Raspberry Pi 4. Integrates Z-Wave, Zigbee, and Wi-Fi devices through a unified API, with a web dashboard and voice command support via Whisper."
-            techStack={['Python', 'FastAPI', 'Raspberry Pi', 'Zigbee', 'SQLite']}
-            imgAlt="Smart home hub prototype"
-          />
+          {categories.map((category) => (
+            <>
+              <div class="section-heading">{category}</div>
+              {projects
+                .filter((project) => project.data.category === category)
+                .map((project) => (
+                  <ProjectCard
+                    title={project.data.title}
+                    status={project.data.status}
+                    href={`/projects/${project.slug}`}
+                    description={project.data.summary}
+                    techStack={project.data.techStack}
+                    imgAlt={project.data.imgAlt}
+                  />
+                ))}
+            </>
+          ))}
         </div>
 
         <!-- Sidebar -->

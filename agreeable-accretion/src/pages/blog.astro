@@ -4,9 +4,12 @@ import SiteHeader from '../components/SiteHeader.astro';
 import Sidebar from '../components/Sidebar.astro';
 import BlogEntry from '../components/BlogEntry.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { getCollection } from 'astro:content';
+import { formatMonthYear, sortBlogPosts } from '../utils/content';
 
 const title = 'Blog — Sheron Jayasinghe';
 const description = 'Writings on robotics, IoT, embedded systems, and mathematics.';
+const posts = sortBlogPosts(await getCollection('blog'));
 ---
 
 <!doctype html>
@@ -25,50 +28,16 @@ const description = 'Writings on robotics, IoT, embedded systems, and mathematic
 
           <div class="section-heading">Articles</div>
 
-          <BlogEntry
-            title="Building an Autonomous Line-Following Robot"
-            author="Sheron Jayasinghe"
-            date="April 2026"
-            href="#"
-            excerpt="Designing a PID-controlled line follower using an ATmega328P microcontroller, with real-time sensor fusion and adaptive speed control — lessons learned from the University Robotics Competition."
-            tags={['robotics', 'embedded', 'AVR', 'PID']}
-          />
-
-          <BlogEntry
-            title="IoT Air Quality Monitoring with ESP32 and MQTT"
-            author="Sheron Jayasinghe"
-            date="March 2026"
-            href="#"
-            excerpt="How I built a distributed air quality monitoring network across the UoM campus using ESP32 nodes, MQ-135 sensors, an MQTT broker, and a Grafana dashboard — all on a near-zero budget."
-            tags={['IoT', 'ESP32', 'MQTT', 'sensors']}
-          />
-
-          <BlogEntry
-            title="Exploring Fourier Analysis in Signal Processing"
-            author="Sheron Jayasinghe"
-            date="February 2026"
-            href="#"
-            excerpt="A beginner-friendly walkthrough of how the Discrete Fourier Transform works under the hood, with Python examples and visualizations — because mathematics and engineering belong together."
-            tags={['mathematics', 'DSP', 'Python']}
-          />
-
-          <BlogEntry
-            title="Getting Started with FreeRTOS on STM32"
-            author="Sheron Jayasinghe"
-            date="January 2026"
-            href="#"
-            excerpt="An introduction to real-time operating systems for embedded development — setting up tasks, semaphores, and queues on an STM32F4 Discovery board using the STM32CubeIDE toolchain."
-            tags={['RTOS', 'STM32', 'embedded', 'C']}
-          />
-
-          <BlogEntry
-            title="Why I Love Maths More Than I Should"
-            author="Sheron Jayasinghe"
-            date="December 2025"
-            href="#"
-            excerpt="A personal essay on how falling in love with pure mathematics changed the way I think about engineering, algorithms, and problem-solving in general."
-            tags={['mathematics', 'opinion']}
-          />
+          {posts.map((post) => (
+            <BlogEntry
+              title={post.data.title}
+              author={post.data.author}
+              date={formatMonthYear(post.data.publishDate)}
+              href={`/blog/${post.slug}`}
+              excerpt={post.data.excerpt}
+              tags={post.data.tags}
+            />
+          ))}
         </div>
 
         <!-- Sidebar -->

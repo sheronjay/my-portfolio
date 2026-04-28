@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { formatMonthYear } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const publishedOn = formatMonthYear(post.data.publishDate);
+const pageTitle = `${post.data.title} — Blog — Sheron Jayasinghe`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={post.data.excerpt} />
+  </head>
+  <body>
+    <div id="wrapper">
+      <SiteHeader activePage="blog" />
+
+      <div id="content-area">
+        <div id="main-column">
+          <p class="issue-line">BLOG &mdash; ARTICLE</p>
+
+          <article class="entry content-entry">
+            <p class="back-link"><a href="/blog">Back to all articles</a></p>
+            <h1>{post.data.title}</h1>
+            <div class="byline">
+              by <span>{post.data.author}</span> &mdash; <span>{publishedOn}</span>
+            </div>
+
+            {post.data.tags.length > 0 && (
+              <div class="entry-tags">
+                {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+            )}
+
+            <div class="entry-content">
+              <Content />
+            </div>
+          </article>
+        </div>
+
+        <Sidebar />
+      </div>
+
+      <SiteFooter />
+    </div>
+  </body>
+</html>
