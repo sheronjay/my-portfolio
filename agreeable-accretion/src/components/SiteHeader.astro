@@ -1,0 +1,36 @@
+---
+interface Props {
+  activePage?: string;
+}
+const { activePage = 'home' } = Astro.props;
+---
+
+<div id="site-header">
+  <div class="site-logo">
+    <span class="initials">SJ</span>
+    <span class="site-name">Sheron Jayasinghe</span>
+  </div>
+</div>
+
+<ul id="primary-nav">
+  <li><a href="/" class={activePage === 'home' ? 'active' : ''}>home</a></li>
+  <li><a href="/blog" class={activePage === 'blog' ? 'active' : ''}>blog</a></li>
+  <li><a href="/projects" class={activePage === 'projects' ? 'active' : ''}>projects</a></li>
+  <li>
+    <a
+      href="https://www.linkedin.com/in/sheron-jayasinghe-54317934a"
+      target="_blank"
+      rel="noreferrer"
+    >linkedin</a>
+  </li>
+  <li>
+    <a
+      href="https://github.com/sheronjay"
+      target="_blank"
+      rel="noreferrer"
+    >github</a>
+  </li>
+  <li>
+    <a href="/cv/CV - Sheron Jayasinghe.pdf" target="_blank" rel="noreferrer">cv</a>
+  </li>
+</ul>

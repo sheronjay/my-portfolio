@@ -1,48 +1,99 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import SiteHeader from '../components/SiteHeader.astro';
+import Sidebar from '../components/Sidebar.astro';
+import BlogEntry from '../components/BlogEntry.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-const paragraphs = [
-	'I am Sheron Jayasinghe, a Computer Science & Engineering undergraduate at the University of Moratuwa, Sri Lanka.',
-	'My passion lies in integrated computer engineering, with a focus on microcontrollers, robotics, and IoT where technology meets creativity. Mathematics is another world I love exploring, especially when it intertwines with my work in robotics and intelligent systems.',
-	'I am a firm believer in learning by doing. Whether it is developing applications to solve everyday problems or understanding computers at their core, I push myself to grow in multiple areas.',
-	'Beyond tech, I have gained business and sales experience as a Sales Executive at Abans PLC, strengthening my ability to communicate, adapt, and solve problems efficiently.',
-	'As I advance in my studies, I am eager to participate in competitions, collaborate on impactful projects, and contribute to cutting-edge innovations that shape the future.',
-];
+const today = new Date().toLocaleDateString('en-US', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<main class="page-shell">
-			<nav aria-label="Primary">
-				<a href="https://www.linkedin.com/in/sheron-jayasinghe-54317934a" target="_blank" rel="noreferrer">
-					LinkedIn
-				</a>
-				<a href="/blog">blog</a>
-				<a href="/cv/CV - Sheron Jayasinghe.pdf" target="_blank" rel="noreferrer">cv</a>
-				<a href="https://github.com/sheronjay" target="_blank" rel="noreferrer">github</a>
-			</nav>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <div id="wrapper">
+      <SiteHeader activePage="home" />
 
-			<section class="intro">
-				<h1>Sheron Jyasinghe&apos;s Homepage</h1>
-				<h2>
-					ආයුබෝවන්! (<a href="http://en.wiktionary.org/wiki/ayubowan" target="_blank" rel="noreferrer"
-						>āyubōvan</a
-					>)
-				</h2>
+      <div id="content-area">
+        <!-- Main column -->
+        <div id="main-column">
+          <p class="issue-line">SHERON JAYASINGHE &mdash; {today} &mdash; COLOMBO, SRI LANKA</p>
 
-				<div class="container">
-					{
-						paragraphs.map((paragraph) => (
-							<p>{paragraph}</p>
-						))
-					}
-				</div>
-			</section>
-		</main>
-	</body>
+          <!-- Intro section styled like an ALA feature article -->
+          <div class="entry">
+            <h2><a href="#">ආයුබෝවන් — Welcome to My Corner of the Web</a></h2>
+            <div class="byline">by <a href="#">Sheron Jayasinghe</a></div>
+            <div class="about-block">
+              <p>
+                I am Sheron Jayasinghe, a Computer Science &amp; Engineering undergraduate at the
+                <a href="https://uom.lk" target="_blank" rel="noreferrer">University of Moratuwa</a>, Sri Lanka.
+              </p>
+              <p>
+                My passion lies in integrated computer engineering, with a focus on microcontrollers,
+                robotics, and IoT — where technology meets creativity. Mathematics is another world
+                I love exploring, especially when it intertwines with my work in robotics and
+                intelligent systems.
+              </p>
+              <p>
+                I am a firm believer in learning by doing. Whether it is developing applications to
+                solve everyday problems or understanding computers at their core, I push myself to
+                grow in multiple areas.
+              </p>
+              <p>
+                Beyond tech, I have gained business and sales experience as a Sales Executive at
+                Abans PLC, strengthening my ability to communicate, adapt, and solve problems efficiently.
+              </p>
+              <p>
+                As I advance in my studies, I am eager to participate in competitions, collaborate on
+                impactful projects, and contribute to cutting-edge innovations that shape the future.
+              </p>
+            </div>
+          </div>
+
+          <!-- Recent posts section -->
+          <div class="section-heading">Recent Posts</div>
+
+          <BlogEntry
+            title="Building an Autonomous Line-Following Robot"
+            author="Sheron Jayasinghe"
+            date="April 2026"
+            href="/blog"
+            excerpt="Designing a PID-controlled line follower using an ATmega328P microcontroller, with real-time sensor fusion and adaptive speed control — lessons learned from the University Robotics Competition."
+            tags={['robotics', 'embedded', 'AVR', 'PID']}
+          />
+
+          <BlogEntry
+            title="IoT Air Quality Monitoring with ESP32 and MQTT"
+            author="Sheron Jayasinghe"
+            date="March 2026"
+            href="/blog"
+            excerpt="How I built a distributed air quality monitoring network across the UoM campus using ESP32 nodes, MQ-135 sensors, an MQTT broker, and a Grafana dashboard — all on a near-zero budget."
+            tags={['IoT', 'ESP32', 'MQTT', 'sensors']}
+          />
+
+          <BlogEntry
+            title="Exploring Fourier Analysis in Signal Processing"
+            author="Sheron Jayasinghe"
+            date="February 2026"
+            href="/blog"
+            excerpt="A beginner-friendly walkthrough of how the Discrete Fourier Transform works under the hood, with Python examples and visualizations — because mathematics and engineering belong together."
+            tags={['mathematics', 'DSP', 'Python']}
+          />
+        </div>
+
+        <!-- Sidebar -->
+        <Sidebar />
+      </div>
+
+      <SiteFooter />
+    </div>
+  </body>
 </html>

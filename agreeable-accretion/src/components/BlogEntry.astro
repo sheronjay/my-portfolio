@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  author?: string;
+  date?: string;
+  tags?: string[];
+  excerpt: string;
+}
+
+const { title, href = '#', author, date, tags = [], excerpt } = Astro.props;
+---
+
+<div class="entry">
+  <h2><a href={href}>{title}</a></h2>
+  {(author || date) && (
+    <div class="byline">
+      {author && <>by <a href="#">{author}</a></>}
+      {author && date && ' — '}
+      {date && <span>{date}</span>}
+    </div>
+  )}
+  <p>{excerpt}</p>
+  {tags.length > 0 && (
+    <div class="entry-tags">
+      {tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
+  )}
+</div>

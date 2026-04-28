@@ -1,170 +1,474 @@
-:root {
-	--page-bg: #f7f8fb;
-	--surface: #ffffff;
-	--text: #333333;
-	--heading: #101820;
-	--nav-bg: #1f2933;
-	--nav-hover: #0095c7;
-	--shadow: 0 18px 45px rgba(16, 24, 32, 0.08);
-}
+/* =====================================================
+   RETRO 2003 PORTFOLIO — Inspired by A List Apart
+   ===================================================== */
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
+/* --- Reset & Base ------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-	background: var(--page-bg);
+  background: #b0b8b8;
 }
 
 body {
-	margin: 0;
-	color: var(--text);
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 18px;
-	line-height: 1.7;
-	text-align: left;
-}
-
-main {
-	width: 100%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333333;
+  background: #b0b8b8;
+  min-height: 100vh;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: #c0392b;
+  text-decoration: none;
 }
 
-.page-shell {
-	min-height: 100vh;
-	padding: 32px 20px 72px;
+a:hover {
+  text-decoration: underline;
+  color: #8b2318;
 }
 
-nav {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin: 0 auto 88px;
-	padding: 14px 18px;
-	width: fit-content;
-	max-width: 100%;
-	border-radius: 999px;
-	background: var(--nav-bg);
-	box-shadow: var(--shadow);
+h1, h2, h3, h4 {
+  font-family: Georgia, serif;
 }
 
-nav a {
-	color: #ffffff;
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-	font-size: 18px;
-	padding: 0 10px;
+/* --- Outer Wrapper ----------------------------------- */
+#wrapper {
+  width: 900px;
+  max-width: calc(100% - 32px);
+  margin: 16px auto;
+  background: #ffffff;
+  border: 1px solid #999;
 }
 
-nav a::after {
-	content: "|";
-	margin-left: 20px;
-	color: rgba(255, 255, 255, 0.45);
+/* --- Site Header / Banner ---------------------------- */
+#site-header {
+  display: flex;
+  align-items: flex-end;
+  height: 80px;
+  background: #1a3a3a url('/banner.png') center center / cover no-repeat;
+  padding: 10px 12px;
+  border-bottom: 2px solid #444;
+  position: relative;
+  overflow: hidden;
 }
 
-nav a:last-child::after {
-	content: "";
-	margin-left: 0;
+#site-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.45));
 }
 
-nav a:hover {
-	color: var(--nav-hover);
+.site-logo {
+  position: relative;
+  z-index: 2;
 }
 
-.intro {
-	margin: 0 auto;
+.site-logo .initials {
+  display: inline-block;
+  background: rgba(255,255,255,0.92);
+  color: #1a3a3a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  padding: 4px 8px;
+  line-height: 1;
+  border: 2px solid rgba(255,255,255,0.6);
 }
 
-h1 {
-	margin: 120px 0 12px;
-	color: var(--heading);
-	text-align: center;
-	font-size: 30px;
-	font-weight: 100;
-	line-height: 1.2;
+.site-logo .site-name {
+  display: block;
+  color: rgba(255,255,255,0.9);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
 }
 
-h2 {
-	margin: 0 0 28px;
-	color: var(--heading);
-	text-align: center;
-	font-size: 22px;
-	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
-		Geneva, Verdana, sans-serif;
-	line-height: 1.4;
+/* --- Primary Navigation ------------------------------ */
+#primary-nav {
+  display: flex;
+  background: #dddddd;
+  border-bottom: 1px solid #999;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-h2 a {
-	text-decoration: underline;
+#primary-nav li a {
+  display: block;
+  padding: 5px 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #333333;
+  text-transform: lowercase;
+  text-decoration: none;
+  border-right: 1px solid #bbb;
 }
 
-p {
-	margin: 0 0 20px;
-	color: var(--text);
-	font-size: 18px;
-	line-height: 1.6;
+#primary-nav li a:hover {
+  background: #cccccc;
+  color: #c0392b;
+  text-decoration: none;
 }
 
-.container {
-	width: 650px;
-	max-width: 100%;
-	margin: 0 auto;
-	padding: 20px;
-	border: none;
+#primary-nav li a.active {
+  background: #c0392b;
+  color: #ffffff;
 }
 
-.blog-placeholder {
-	max-width: 650px;
-	margin: 120px auto 0;
-	padding: 32px;
-	background: var(--surface);
-	border-radius: 24px;
-	box-shadow: var(--shadow);
+#primary-nav li a.active:hover {
+  background: #a93226;
+  color: #fff;
 }
 
-.blog-placeholder h1 {
-	margin-top: 0;
+/* --- Content Area (2-column) ------------------------- */
+#content-area {
+  display: flex;
+  border-top: none;
 }
 
-.blog-placeholder p:last-child {
-	margin-bottom: 0;
+/* --- Main Column ------------------------------------- */
+#main-column {
+  flex: 1;
+  padding: 14px 16px;
+  border-right: 1px solid #cccccc;
+  min-width: 0;
 }
 
-@media (max-width: 720px) {
-	.page-shell {
-		padding: 24px 16px 48px;
-	}
+.issue-line {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #c0392b;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 8px;
+}
 
-	nav {
-		margin-bottom: 56px;
-		padding: 12px 14px;
-		border-radius: 24px;
-	}
+/* --- Article / Entry Cards -------------------------- */
+.entry {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+}
 
-	nav a {
-		padding: 4px 8px;
-	}
+.entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 
-	nav a::after {
-		margin-left: 16px;
-	}
+.entry h2 {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
 
-	h1 {
-		margin-top: 72px;
-		font-size: 26px;
-	}
+.entry h2 a {
+  color: #c0392b;
+}
 
-	h2 {
-		font-size: 20px;
-	}
+.entry h2 a:hover {
+  text-decoration: underline;
+}
 
-	.blog-placeholder {
-		margin-top: 72px;
-		padding: 24px;
-	}
+.entry .byline {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #666;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.entry .byline a {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.entry p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.entry .entry-meta {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #888;
+}
+
+.entry .entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.entry .tag {
+  display: inline-block;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  padding: 1px 5px;
+  text-transform: lowercase;
+}
+
+/* --- Project Cards ----------------------------------- */
+.project-card {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.project-card:last-child {
+  border-bottom: none;
+}
+
+.project-card h2 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.project-card h2 a {
+  color: #c0392b;
+}
+
+.project-card h2 a:hover {
+  text-decoration: underline;
+}
+
+.project-card .project-img-placeholder {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(135deg, #b0c4c4 0%, #8aa5a5 50%, #6b8888 100%);
+  border: 1px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .project-img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.05) 10px,
+    rgba(255,255,255,0.05) 20px
+  );
+}
+
+.project-card .project-img-placeholder span {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 1;
+  border: 1px dashed rgba(255,255,255,0.4);
+  padding: 4px 10px;
+}
+
+.project-card .project-status {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.project-card .project-status.wip {
+  background: #f39c12;
+  color: #fff;
+}
+
+.project-card .project-status.complete {
+  background: #27ae60;
+  color: #fff;
+}
+
+.project-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.project-card .tech-stack {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #888;
+}
+
+.project-card .tech-stack strong {
+  color: #555;
+}
+
+/* --- Section Headings -------------------------------- */
+.section-heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #c0392b;
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+  margin-top: 8px;
+}
+
+/* --- Sidebar ---------------------------------------- */
+#sidebar {
+  width: 155px;
+  flex-shrink: 0;
+  padding: 14px 12px;
+  background: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+.sidebar-section {
+  margin-bottom: 18px;
+}
+
+.sidebar-section h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+}
+
+.sidebar-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-section ul li {
+  padding: 2px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.sidebar-section ul li::before {
+  content: '◆';
+  color: #c0392b;
+  font-size: 7px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sidebar-section ul li a {
+  color: #c0392b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.sidebar-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.sidebar-section ul li .count {
+  color: #999;
+  font-size: 9px;
+}
+
+.sidebar-note {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.sidebar-note a {
+  color: #c0392b;
+}
+
+/* --- About / Intro on homepage ---------------------- */
+.about-block {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #333;
+}
+
+.about-block p {
+  margin-bottom: 10px;
+}
+
+.about-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Footer ----------------------------------------- */
+#site-footer {
+  background: #e8e8e8;
+  border-top: 1px solid #aaa;
+  padding: 8px 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #555;
+  text-align: center;
+}
+
+#site-footer a {
+  color: #c0392b;
+}
+
+#site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive tweaks ------------------------------ */
+@media (max-width: 640px) {
+  #wrapper {
+    margin: 0;
+    border: none;
+    width: 100%;
+  }
+
+  #content-area {
+    flex-direction: column;
+  }
+
+  #main-column {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #sidebar {
+    width: 100%;
+  }
+
+  #primary-nav {
+    flex-wrap: wrap;
+  }
 }

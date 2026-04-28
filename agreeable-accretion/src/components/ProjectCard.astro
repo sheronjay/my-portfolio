@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  status?: 'wip' | 'complete';
+  description: string;
+  techStack?: string[];
+  imgAlt?: string;
+}
+
+const {
+  title,
+  href = '#',
+  status = 'complete',
+  description,
+  techStack = [],
+  imgAlt = 'Project screenshot placeholder',
+} = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-img-placeholder" aria-label={imgAlt}>
+    <span>[ screenshot ]</span>
+  </div>
+
+  <span class={`project-status ${status}`}>
+    {status === 'wip' ? 'In Progress' : 'Completed'}
+  </span>
+
+  <h2><a href={href}>{title}</a></h2>
+  <p>{description}</p>
+  {techStack.length > 0 && (
+    <p class="tech-stack">
+      <strong>Stack:</strong> {techStack.join(', ')}
+    </p>
+  )}
+</div>
