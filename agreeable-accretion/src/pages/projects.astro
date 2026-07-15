@@ -4,13 +4,13 @@ import SiteHeader from '../components/SiteHeader.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { getCollection } from 'astro:content';
-import { sortProjects } from '../utils/content';
+import { getContentCollection, sortProjects } from '../utils/content';
 
 const title = 'Projects — Sheron Jayasinghe';
 const description = 'Robotics, IoT, and software projects by Sheron Jayasinghe.';
-const projects = sortProjects(await getCollection('projects'));
+const projects = sortProjects(await getContentCollection('projects'));
 const categories = [...new Set(projects.map((project) => project.data.category))];
+const emptyMessage = 'Sheron is too lazy to update this section. you will see them once he updates it';
 ---
 
 <!doctype html>
@@ -27,23 +27,27 @@ const categories = [...new Set(projects.map((project) => project.data.category))
         <div id="main-column">
           <p class="issue-line">PROJECTS &mdash; SELECTED WORKS</p>
 
-          {categories.map((category) => (
-            <>
-              <div class="section-heading">{category}</div>
-              {projects
-                .filter((project) => project.data.category === category)
-                .map((project) => (
-                  <ProjectCard
-                    title={project.data.title}
-                    status={project.data.status}
-                    href={`/projects/${project.slug}`}
-                    description={project.data.summary}
-                    techStack={project.data.techStack}
-                    imgAlt={project.data.imgAlt}
-                  />
-                ))}
-            </>
-          ))}
+          {projects.length > 0 ? (
+            categories.map((category) => (
+              <>
+                <div class="section-heading">{category}</div>
+                {projects
+                  .filter((project) => project.data.category === category)
+                  .map((project) => (
+                    <ProjectCard
+                      title={project.data.title}
+                      status={project.data.status}
+                      href={`/projects/${project.slug}`}
+                      description={project.data.summary}
+                      techStack={project.data.techStack}
+                      imgAlt={project.data.imgAlt}
+                    />
+                  ))}
+              </>
+            ))
+          ) : (
+            <p class="empty-state">{emptyMessage}</p>
+          )}
         </div>
 
         <!-- Sidebar -->

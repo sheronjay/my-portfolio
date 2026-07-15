@@ -1,4 +1,29 @@
-import type { CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type ContentCollection = 'blog' | 'projects';
+
+const contentFiles = {
+  blog: import.meta.glob('../content/blog/**/*.md'),
+  projects: import.meta.glob('../content/projects/**/*.md'),
+};
+
+export async function getContentCollection<T extends ContentCollection>(
+  collection: T,
+): Promise<CollectionEntry<T>[]> {
+  if (Object.keys(contentFiles[collection]).length === 0) {
+    return [];
+  }
+
+  try {
+    return await getCollection(collection);
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('does not exist or is empty')) {
+      return [];
+    }
+
+    throw error;
+  }
+}
 
 export function formatMonthYear(date: Date) {
   return new Intl.DateTimeFormat('en-US', {

@@ -344,6 +344,18 @@ h1, h2, h3, h4 {
   color: #c0392b;
 }
 
+/* --- Empty States ------------------------------------ */
+.empty-state {
+  border: 1px dashed #c8c8c8;
+  background: #f7f7f7;
+  color: #666;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+}
+
 /* --- Section Headings -------------------------------- */
 .section-heading {
   font-family: Arial, Helvetica, sans-serif;

@@ -4,9 +4,8 @@ import SiteHeader from '../components/SiteHeader.astro';
 import Sidebar from '../components/Sidebar.astro';
 import BlogEntry from '../components/BlogEntry.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { formatMonthYear, sortBlogPosts } from '../utils/content';
+import { formatMonthYear, getContentCollection, sortBlogPosts } from '../utils/content';
 
 const today = new Date().toLocaleDateString('en-US', {
   day: 'numeric',
@@ -14,7 +13,8 @@ const today = new Date().toLocaleDateString('en-US', {
   year: 'numeric',
 });
 
-const recentPosts = sortBlogPosts(await getCollection('blog')).slice(0, 3);
+const recentPosts = sortBlogPosts(await getContentCollection('blog')).slice(0, 3);
+const emptyMessage = 'Sheron is too lazy to update this section. you will see them once he updates it';
 ---
 
 <!doctype html>
@@ -65,16 +65,20 @@ const recentPosts = sortBlogPosts(await getCollection('blog')).slice(0, 3);
           <!-- Recent posts section -->
           <div class="section-heading">Recent Posts</div>
 
-          {recentPosts.map((post) => (
-            <BlogEntry
-              title={post.data.title}
-              author={post.data.author}
-              date={formatMonthYear(post.data.publishDate)}
-              href={`/blog/${post.slug}`}
-              excerpt={post.data.excerpt}
-              tags={post.data.tags}
-            />
-          ))}
+          {recentPosts.length > 0 ? (
+            recentPosts.map((post) => (
+              <BlogEntry
+                title={post.data.title}
+                author={post.data.author}
+                date={formatMonthYear(post.data.publishDate)}
+                href={`/blog/${post.slug}`}
+                excerpt={post.data.excerpt}
+                tags={post.data.tags}
+              />
+            ))
+          ) : (
+            <p class="empty-state">{emptyMessage}</p>
+          )}
         </div>
 
         <!-- Sidebar -->
