@@ -50,7 +50,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: flex-end;
   height: 80px;
-  background: #1a3a3a url('/banner.png') center center / cover no-repeat;
+  background: #1a3a3a url('/my-portfolio/banner.png') center center / cover no-repeat;
   padding: 10px 12px;
   border-bottom: 2px solid #444;
   position: relative;
