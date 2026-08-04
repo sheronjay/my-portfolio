@@ -14,6 +14,7 @@
 \usepackage{array}
 \usepackage[dvipsnames]{xcolor}
 \definecolor{primaryColor}{RGB}{0, 0, 0}
+\definecolor{linkColor}{RGB}{0,70,140}
 \usepackage{enumitem}
 \usepackage{fontawesome5}
 \usepackage{amsmath}
@@ -22,7 +23,7 @@
     pdfauthor={Kaveen Sheron Jayasinghe},
     pdfcreator={LaTeX with RenderCV},
     colorlinks=true,
-    urlcolor=primaryColor
+    urlcolor=linkColor
 ]{hyperref}
 \usepackage[pscoord]{eso-pic}
 \usepackage{calc}
@@ -33,6 +34,7 @@
 \usepackage{ifthen}
 \usepackage{needspace}
 \usepackage{iftex}
+
 
 % Ensure that generated pdf is machine readable/ATS parsable:
 \ifPDFTeX
@@ -93,7 +95,7 @@
 \newenvironment{twocolentry}[2][]{
     \onecolentry
     \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
+    \setcolumnwidth{\fill, 6.0 cm}
     \begin{paracol}{2}
 }{
     \switchcolumn \raggedleft \secondColumn
@@ -147,23 +149,25 @@
     \vspace{5 pt}
 
     \normalsize
-    \mbox{\hrefWithoutArrow{https://sheronjay.github.io/my-portfolio/#}{Website}}%
+    \mbox{\hrefWithoutArrow{https://sheronjay.github.io/my-portfolio/}{\underline{sheronjay.github.io/my-portfolio}}}%
     \kern 5.0 pt%
     \AND%
     \kern 5.0 pt%
+    \mbox{\hrefWithoutArrow{https://github.com/sheronjay}{\underline{github.com/sheronjay}}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/sheronjay}{\underline{linkedin.com/in/sheronjay}}}%
+    
+
+    \vspace{3 pt}
+
+    
     \mbox{\hrefWithoutArrow{mailto:jayasinghesheronj24@gmail.com}{jayasinghesheronj24@gmail.com}}%
     \kern 5.0 pt%
     \AND%
     \kern 5.0 pt%
     \mbox{\hrefWithoutArrow{tel:+94723850350}{+94 72 385 0350}}%
-    \kern 5.0 pt%
-    \AND%
-    \kern 5.0 pt%
-    \mbox{\hrefWithoutArrow{https://github.com/sheronjay}{GitHub}}%
-    \kern 5.0 pt%
-    \AND%
-    \kern 5.0 pt%
-    \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/sheronjay}{LinkedIn}}%
 \end{header}
 
 
@@ -176,8 +180,8 @@
         \begin{onecolentry}
             \begin{highlights}
                 \item B.Sc. Engineering (Hons) in Computer Science \& Engineering, University of Moratuwa — 3rd Year Undergraduate (2023 – Present).
-                \item General Certificate Exam Advanced Level, physical sciences stream, Sri Lanka. ZScore +2.2905, with 3As (2022).
-                \item General Certificate Exam Ordinary Level, 9As (2019).
+                \item General Certificate Exam Advanced Level, physical sciences stream, Sri Lanka. ZScore +2.2905, with 3 Distinction passes (2022).
+                \item General Certificate Exam Ordinary Level, 9 Distinction passes (2019).
                 \item Primary and Secondary education at St. Joseph’s College Colombo-10.
             \end{highlights}
         \end{onecolentry}
@@ -185,80 +189,66 @@
     \section{Experience}
 
         \begin{twocolentry}{}
-            \textbf{Collaborator}, Oppia Foundation (2026 - Present)
+            \textbf{Collaborator}, Oppia Foundation (Google-backed) (2026 - Present)
         \end{twocolentry}
 
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                \item Member of the CORE (Creators, Operations, Reviewers, and Editors) team at the Google backed open source organization Oppia Foundation.
-                \item Contribute to full stack feature development and resolve regressions across the project.
-                \item Beyond feature development, act as a training co-lead by mentoring and onboarding new contributors, reviewing proposed solutions, assigning issues, and collaborating with project leads to coordinate quarterly planning and track project progress.
+                \item Act as Training Co-Lead within the CORE (Creators, Operations, Reviewers, and Editors) team.
+                \item Contribute to full-stack feature development using Angular and Python, develop e2e tests with Playwright, mentor and onboard new contributors, and coordinate quarterly project planning.
+
+
                 
             \end{highlights}
         \end{onecolentry}
 
         \vspace{0.2 cm}
         \begin{twocolentry}{}
-            \textbf{Associate Software Engineer}, ictfromabc (2025 - Present)
+            \textbf{Full Stack Developer}, ictfromabc (2025 - Present)
         \end{twocolentry}
 
 
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                \item Developed and shipped features for a Laravel, SvelteKit, and Flutter based learning platform serving 55,000+ registered users.
-                \item Implemented key platform features including password recovery, payment integration, ticketing system, user reviews with admin approval workflow and an SMS portal.
-                \item Improved application quality by writing controller and integration tests for multiple backend modules and contributing to CI/testing workflows.
-            \end{highlights}
-        \end{onecolentry}
-        
-        \vspace{0.2 cm}
-        \begin{twocolentry}{}
-            \textbf{Sales Executive}, Abans PLC (2022 -2023)
-        \end{twocolentry}
+                \item Develop and maintain a Laravel, SvelteKit, and Flutter based learning platform serving 55,000+ registered users.
+                \item Build and integrate full-stack features while improving platform reliability by writing backend tests and contributing to CI workflows.
 
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Completed technical training on Apple devices and retail operational workflows.
-                \item Achieved over LKR 20 million in sales in a single month by advising customers across multiple product categories.
-                \item Strengthened communication and problem-solving skills in a high-volume retail environment.
             \end{highlights}
         \end{onecolentry}
 
    \section{Projects}
 
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/orgs/Prypiatos/repositories}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/orgs/Prypiatos/repositories}{\underline{Prypiatos/repositories}}}
             \textbf{Prypiatos}
         \end{twocolentry}
         
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                \item Led the design and deployment of a smart energy platform integrating ESP32 based edge nodes, MQTT telemetry pipelines, and cloud native backend services.
+                \item Led infrastructure implementation by provisioning AWS infrastructure for a 3 node self managed k3s Kubernetes cluster using Terraform, including EC2 instances and EBS storage configuration.
+                \item Automated Kubernetes cluster bootstrap with Ansible, covering control plane setup and worker node joining.
+                \item Implemented a GitOps deployment workflow with Argo CD, enabling continuous synchronization between Git managed Kubernetes manifests and the live cluster state.
                 \item Built MQTT based edge device workflows for real time energy data acquisition, local buffering, reconnection handling and reliable device-to-cloud message delivery.
-                \item Engineered infrastructure and deployment pipelines using Terraform, Ansible, Docker, Kubernetes and Argo CD for automated provisioning, cluster setup, and application rollout.
-                \item Defined Git based development workflows and drove cross team integration, release coordination and platform stabilization across the deployment lifecycle.
             \end{highlights}
         \end{onecolentry}
 
         \vspace{0.2 cm}
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/CrossLingual-FaceDub}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/CrossLingual-FaceDub}{\underline{sheronjay/CrossLingual-FaceDub}}}
             \textbf{Cross-Lingual Speech \& Identity Synthesis System}
         \end{twocolentry}
         
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                \item End-to-end English-to-Sinhala AI system for speech processing and NLP with speaker-preserving voice and lip synchronization.
+                \item Developed an end-to-end English-to-Sinhala multimedia processing pipeline in Python, integrating speech processing, machine translation, speaker-preserving voice conversion, and lip synchronization.
                 \item Built using WhisperX for transcription, NLLB-200 for translation, Coqui TTS and a custom voice conversion model to mimic the original speaker’s voice, and Wav2Lip for realistic lip-syncing.
-                \item Fully implemented in Python as an automated multimedia processing pipeline.
             \end{highlights}
         \end{onecolentry}
 
         \vspace{0.2 cm}
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/IESL-RoboGames}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/IESL-RoboGames}{\underline{IESL-RoboGames}}}
             \textbf{Autonomous Drone Platform for IESL-RoboGames}
         \end{twocolentry}
         
@@ -272,21 +262,21 @@
         \end{onecolentry}
 
         \vspace{0.2 cm}
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/Syncode-Veri5}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/Syncode-Veri5}{\underline{sheronjay/Syncode-Veri5}}}
             \textbf{Veri5}
         \end{twocolentry}
         
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                \item Architected a full-stack platform using Next.js 16, React 19, Express 5, TypeScript, Prisma, and PostgreSQL, with modular APIs for authentication, test-kit verification, appointments, orders, clinics, and practitioner workflows.
+                \item Architected a full-stack platform using Next.js, React, TypeScript, Prisma, and PostgreSQL with modular APIs for authentication, test-kit verification, appointments, orders, clinics, and practitioner workflows.
                 \item Implemented a client-side validation pipeline with TensorFlow.js and custom EXIF metadata parsing to run image inference in-browser, detect screenshots or edited uploads, and preserve privacy by keeping raw images off the backend.
                 \item Designed transactional backend workflows with JWT and Google OAuth, hashed one-time status-share tokens, serial-based test-kit verification, and atomic database updates for kit usage, verification state, and appointment slot availability; selected as a Finalist at Devthon 3.0.
             \end{highlights}
         \end{onecolentry}
 
         \vspace{0.2 cm}
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/Ohana-Note}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/Ohana-Note}{\underline{sheronjay/Ohana-Note}}}
             \textbf{Ohana Note}
         \end{twocolentry}
         
@@ -299,7 +289,7 @@
         \end{onecolentry}
 
         \vspace{0.2 cm}
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/N1K0-micromouse/n1k0_v0.1}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/N1K0-micromouse/n1k0_v0.1}{\underline{github.com/N1K0-micromouse}}}
             \textbf{N1K0}
         \end{twocolentry}
         
@@ -312,7 +302,7 @@
         \end{onecolentry}
 
         \vspace{0.2 cm}
-        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/supply-chain-management-sys}{link to the project}}
+        \begin{twocolentry}[6.3cm]{\hrefWithoutArrow{https://github.com/sheronjay/supply-chain-management-sys}{\underline{sheronjay/supply-chain-management}}}
             \textbf{Kandypack}
         \end{twocolentry}
         
@@ -359,18 +349,6 @@
 
         \vspace{0.2 cm}
         \begin{twocolentry}{}
-            \textbf{Technical Committee Member — IESL Robogames 2025/26}
-        \end{twocolentry}
-        
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Contributed to team evaluations, competition environment setup, and sandbox development as part of the Technical Committee for IESL Robogames 2025/26.
-            \end{highlights}
-        \end{onecolentry}
-
-        \vspace{0.2 cm}
-        \begin{twocolentry}{}
             \textbf{Member — AIESEC in Colombo South (2025–2026)}
         \end{twocolentry}
         
@@ -378,32 +356,6 @@
         \begin{onecolentry}
             \begin{highlights}
                 \item Contributed to cross-cultural experience programs and internal operations within a global student-led organization.
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-        \begin{twocolentry}{}
-            \textbf{Content Creator — Debug Diaries (2025)}
-        \end{twocolentry}
-        
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Handled graphic design, live filming, and real-time video editing for technical content.
-            \end{highlights}
-        \end{onecolentry}
-
-        \vspace{0.2 cm}
-        \begin{twocolentry}{}
-            \textbf{Secretary — Science Union, St. Joseph’s College, Colombo
-            (2022)}
-        \end{twocolentry}
-        
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Managed meeting records, coordination, and administrative communication for the school science society.
             \end{highlights}
         \end{onecolentry}
 
@@ -426,7 +378,7 @@
 
         \vspace{0.2 cm}
         \begin{onecolentry}
-            \textbf{Web/Frameworks:} REST API, React, Express, Laravel, SvelteKit
+            \textbf{Web/Frameworks:} REST API, React, Angular, Playwright, Laravel, SvelteKit, Express
         \end{onecolentry}
 
         \vspace{0.2 cm}
